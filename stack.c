@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_SIZE 32768// Maximum size of stack
+#define MAX_SIZE 32768 // Maximum size of stack
 
 typedef struct {
 	double arr[MAX_SIZE];
