@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_SIZE 3 // Maximum size of stack
+#define MAX_SIZE 32768 // Maximum size of stack
 typedef struct {
     double x;
     double y;
