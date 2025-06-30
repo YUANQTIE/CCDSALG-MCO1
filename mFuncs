@@ -2,6 +2,30 @@
 
 #define PI 3.1415
 
+    /*Function that computes for the angle between the an anchor point and a relative point.
+    @param relativePoint - a point on the points array that will get its angle with the anchor point.
+    @param anchorPoint - the lowest x y values within the points array.
+    @return the angle computed*/
+
+double computeAngle(coordinates relativePoint, coordinates anchorPoint){
+    return atan2(relativePoint.y - anchorPoint.y, relativePoint.x - anchorPoint.x) * (180.0 / PI);
+}
+
+    /*Function that determines if two progressing coordinates are clockwise or counter-clockwise
+    @param points - an array containing all of the points.
+    @param arrSize- number of points.
+    @param anchorPoint - the lowest x y values within the points array.
+    @return the array of angles computed.*/
+
+
+double* getArrayOfAngles(coordinates points[], int arrSize, coordinates anchorPoint) {
+    double *angles = malloc(arrSize * sizeof(double));;
+    for (int i = 0; i < arrSize; i++) {
+        angles[i] = computeAngle(points[i], anchorPoint); //compute for the angles of the lowest anchor point with tall the points.
+    }
+    return angles;
+}
+
     /*Function that determines if two progressing coordinates are clockwise or counter-clockwise
     @param coord1 - an anchor point
     @param coord2- a point added to the stack that could be an anchor point.
@@ -21,26 +45,3 @@ int isClockwise(coordinates coord1, coordinates coord2, coordinates coord3) {
     return flag;               
 }
 
-    /*Function that determines if two progressing coordinates are clockwise or counter-clockwise
-    @param points - an array containing all of the points.
-    @param arrSize- number of points.
-    @param anchorPoint - the lowest x y values within the points array.
-    @return the array of angles computed.*/
-
-
-double* getArrayOfAngles(coordinates points[], int arrSize, coordinates anchorPoint) {
-    double *angles = malloc(arrSize * sizeof(double));;
-    for (int i = 0; i < arrSize; i++) {
-        angles[i] = computeAngle(points[i], anchorPoint); //compute for the angles of the lowest anchor point with tall the points.
-    }
-    return angles;
-}
-
-    /*Function that computes for the angle between the an anchor point and a relative point.
-    @param relativePoint - a point on the points array that will get its angle with the anchor point.
-    @param anchorPoint - the lowest x y values within the points array.
-    @return the angle computed*/
-
-double computeAngle(coordinates relativePoint, coordinates anchorPoint){
-    return atan2(relativePoint.y - anchorPoint.y, relativePoint.x - anchorPoint.x) * (180.0 / PI);
-}
