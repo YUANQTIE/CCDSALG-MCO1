@@ -1,51 +1,22 @@
 #include <stdio.h>
-#define MAX_SIZE 32768 // Maximum size of stack
+#define MAX_SIZE 3 // Maximum size of stack
+typedef struct {
+    double x;
+    double y;
+} coordinates;
 
 typedef struct {
-	double arr[MAX_SIZE];
+	coordinates cords[MAX_SIZE];
 	int top; // Index of top element
 } Stack;
+
 
 void create(Stack *s) {
 	s->top = -1;
 }
 
-void push(Stack *s, double elem) {
-	if(s->top < MAX_SIZE-1) {
-		s->top++;
-		s->arr[s->top] = elem;
-	}
-	else
-		printf("Overflow error.");
-}
-
-double pop(Stack *s) {
-	double elem;
-	if(s->top >= 0) {
-		elem = s->arr[s->top];
-		s->top--;
-	}
-	else
-		elem = -999;
-		
-
-	return elem;
-}
-
-double top(Stack *s) {
-	double elem;
-	if(s->top >= 0) {
-		elem = s->arr[s->top];
-	}
-	else
-		elem = -999;
-		
-	
-	return elem;
-}
-
 int isFull(Stack *s) {
-	if(s->top == (sizeof(s->arr)/8) - 1)
+	if(s->top == (sizeof(s->cords)/16) - 1)
 		return 1;
 	else
 		return 0;
@@ -59,13 +30,47 @@ int isEmpty(Stack *s) {
 		return 0;
 }
 
-double nextToTop(Stack *s) {
-	double elem;
-	if(s->top >= 1) {
-		elem = s->arr[s->top - 1];
+void push(Stack *s, coordinates elem) {
+	if(isFull(s) == 0) {
+		s->top++;
+		s->cords[s->top] = elem;
 	}
 	else
-		elem = -999;
+		printf("Overflow error.");
+}
+
+coordinates pop(Stack *s) {
+	coordinates elem;
+	if(isEmpty(s) == 0) {
+		elem = s->cords[s->top];
+		s->top--;
+	}
+	else
+		printf("Underflow error.");
+		
+
+	return elem;
+}
+
+coordinates top(Stack *s) {
+	coordinates elem;
+	if(isEmpty(s) == 0) {
+		elem = s->cords[s->top];
+	}
+	else
+		printf("Empty Stack.");
+		
+	
+	return elem;
+}
+
+coordinates nextToTop(Stack *s) {
+	coordinates elem;
+	if(s->top >= 1) {
+		elem = s->cords[s->top - 1];
+	}
+	else
+		printf("Stack only contains one elem.");
 		
 	
 	return elem;
@@ -73,19 +78,28 @@ double nextToTop(Stack *s) {
 
 int main() {
 	Stack s;
+	coordinates c;
+	coordinates d;
+	coordinates e;
+	c.x = 100;
+	c.y = 100;
+	d.x = 200;
+	d.y = 200;
+	e.x = 300;
+	e.y = 300;
 	create(&s); 
-	push(&s, 100);
-	push(&s, 500);
-	push(&s, 600);
-	double elem = top(&s);
-	double elem1 = nextToTop(&s);
+	push(&s, c);
+	push(&s, d);
+	push(&s, e);
+	coordinates elem = top(&s);
+	coordinates elem1 = nextToTop(&s);
 	for(int i=s.top; i>-1; i--){
-		printf("%lf", s.arr[i]);
+		printf("x = %lf      y = %lf", s.cords[i].x, s.cords[i].y);
 		printf("\n");
 	}
 	
-	printf("Elem: %lf", elem);
-	printf("\nNext to top: %f", elem1);
+	printf("Top X = %lf         Top Y = %lf", elem.x, elem.y);
+	printf("\nNext to top X: %lf         Y: %lf", elem1.x, elem1.y);
 	printf("\nIs Full: %d", isFull(&s));
 	printf("\nIs Empty: %d", isEmpty(&s));
 }
