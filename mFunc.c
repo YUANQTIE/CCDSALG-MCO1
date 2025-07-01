@@ -28,21 +28,6 @@ double computeAngle(coordinates relativePoint, coordinates anchorPoint){
 }
 
     /*Function that determines if two progressing coordinates are clockwise or counter-clockwise
-    @param points - an array containing all of the points.
-    @param arrSize- number of points.
-    @param anchorPoint - the lowest x y values within the points array.
-    @return the array of angles computed.*/
-
-
-double* getArrayOfAngles(coordinates points[], int arrSize, coordinates anchorPoint) {
-    double *angles = malloc(arrSize * sizeof(double));;
-    for (int i = 0; i < arrSize; i++) {
-        angles[i] = computeAngle(points[i], anchorPoint); //compute for the angles of the lowest anchor point with tall the points.
-    }
-    return angles;
-}
-
-    /*Function that determines if two progressing coordinates are clockwise or counter-clockwise
     @param coord1 - an anchor point
     @param coord2- a point added to the stack that could be an anchor point.
     @param coord3- a that connects to coord2.
