@@ -1,3 +1,5 @@
+#include <math.h>
+#include <stdlib.h>
 #include "stack.h"
 #ifndef MFUNC_H
 #define MFUNC_H
