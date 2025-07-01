@@ -1,5 +1,22 @@
 #include "mFunc.h"
 
+ /*Function that determines the anchor point in an array of points.
+    @param points - an array containing all of the points.
+    @param arrSize- number of points.
+    @return the anchor point*/
+
+coordinates findAnchorPoint(coordinates points[], int size) {
+	coordinates min = points[0];
+	for(int i=1; i< size-1; i++) {
+		if(min.y > points[i].y)
+			min = points[i];
+		else if(min.y == points[i].y)
+			if(min.x > points[i].x)
+				min = points[i];
+	}
+	
+	return min;
+}
 
     /*Function that computes for the angle between the an anchor point and a relative point.
     @param relativePoint - a point on the points array that will get its angle with the anchor point.
