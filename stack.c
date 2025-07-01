@@ -1,22 +1,11 @@
 #include <stdio.h>
-#define MAX_SIZE 32768 // Maximum size of stack
-typedef struct {
-    double x;
-    double y;
-} coordinates;
-
-typedef struct {
-	coordinates coord[MAX_SIZE];
-	int top; // Index of top element
-} Stack;
-
-
+#include "stack.h"
 void create(Stack *s) {
 	s->top = -1;
 }
 
 int isFull(Stack *s) {
-	if(s->top == (sizeof(s->coord)/16) - 1)
+	if(s->top == (sizeof(s->cords)/16) - 1)
 		return 1;
 	else
 		return 0;
@@ -33,7 +22,7 @@ int isEmpty(Stack *s) {
 void push(Stack *s, coordinates elem) {
 	if(isFull(s) == 0) {
 		s->top++;
-		s->coord[s->top] = elem;
+		s->cords[s->top] = elem;
 	}
 	else
 		printf("Overflow error.");
@@ -42,7 +31,7 @@ void push(Stack *s, coordinates elem) {
 coordinates pop(Stack *s) {
 	coordinates elem;
 	if(isEmpty(s) == 0) {
-		elem = s->coord[s->top];
+		elem = s->cords[s->top];
 		s->top--;
 	}
 	else
@@ -55,7 +44,7 @@ coordinates pop(Stack *s) {
 coordinates top(Stack *s) {
 	coordinates elem;
 	if(isEmpty(s) == 0) {
-		elem = s->coord[s->top];
+		elem = s->cords[s->top];
 	}
 	else
 		printf("Empty Stack.");
@@ -67,7 +56,7 @@ coordinates top(Stack *s) {
 coordinates nextToTop(Stack *s) {
 	coordinates elem;
 	if(s->top >= 1) {
-		elem = s->coord[s->top - 1];
+		elem = s->cords[s->top - 1];
 	}
 	else
 		printf("Stack only contains one elem.");
@@ -94,7 +83,7 @@ int main() {
 	coordinates elem = top(&s);
 	coordinates elem1 = nextToTop(&s);
 	for(int i=s.top; i>-1; i--){
-		printf("x = %lf      y = %lf", s.coord[i].x, s.coord[i].y);
+		printf("x = %lf      y = %lf", s.cords[i].x, s.cords[i].y);
 		printf("\n");
 	}
 	
