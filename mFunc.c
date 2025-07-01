@@ -61,3 +61,25 @@ int isClockwise(coordinates coord1, coordinates coord2, coordinates coord3) {
     return flag;               
 }
 
+    /*Function that determines which of the two points are lower vertically on a Cartesian Graph.
+    If both are the same y-value, compares the lower x-value instead.
+    @param points - an array containing all of the points.
+    @param low - lowest index of the sub-array.
+    @param mid - middle index of the sub-array.
+    @param high - highest index of the sub-array.*/
+
+int isLowerCoordinate(coordinates point_1, coordinates point_2){
+    int flag = 0;
+    if (point_1.y < point_2.y) //checks vertically
+    {
+        flag = 1;
+    }
+    else if (point_1.y == point_2.y){
+        if (point_1.x < point_2.x) //checks horizontally
+        {
+            flag = 1;
+        }
+    }
+    return flag;
+    
+}
