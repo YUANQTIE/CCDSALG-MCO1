@@ -5,9 +5,9 @@
 #define STEP  (1024)
 #define LIMIT (32768)
 void grahamScan(point points[], int size, Stack*s) {
-	clock_t the_start; // start time 
-  	clock_t the_end;   // end time
-  	the_start = clock();  // record the start time
+	clock_t start; // start time 
+  	clock_t end;   // end time
+  	start = clock();  // record the start time
 	int orig_size = size; 
 	create(s);
 	selectionSort(points, size);
@@ -24,10 +24,10 @@ void grahamScan(point points[], int size, Stack*s) {
 			push(s, points[i]);
 		}
 	}
-	the_end = clock();  // record the end time
+	end = clock();  // record the end time
 
   // prints the input size n and the corresponding elapsed execution time in ms (millisecond)
-  printf("Input Size: %d\nElapsed Execution Time (in ms): %lf\n", orig_size, (double)(the_end - the_start));  
+  printf("Input Size: %d\nElapsed Execution Time (in ms): %lf\n", orig_size, (double)(end - start));  
 }
 
 
