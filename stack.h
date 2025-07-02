@@ -4,19 +4,19 @@
 typedef struct{
     double x;
     double y;
-}coordinates;
+}point;
 
 typedef struct{
-	coordinates cords[MAX_SIZE];
+	point points[MAX_SIZE];
 	int top; // Index of top element
 }Stack;
 
 void create(Stack *s);
 int isFull(Stack *s);
 int isEmpty(Stack *s);
-void push(Stack *s, coordinates elem);
-coordinates pop(Stack *s);
-coordinates top(Stack *s);
-coordinates nextToTop(Stack *s);
+void push(Stack *s, point elem);
+point pop(Stack *s);
+point top(Stack *s);
+point nextToTop(Stack *s);
 
 #endif
