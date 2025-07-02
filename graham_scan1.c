@@ -12,7 +12,7 @@ void grahamScan(point points[], int size, Stack*s) {
 	push(s, points[0]);
 	push(s, points[1]);
 	for(int i=2; i<size; i++) {
-		if(isClockwise(points[i-2], points[i-1], points[i])==1) {
+		if(isClockwise(nextToTop(s), top(s), points[i])==1) {
 			i--;
 			pop(s);
 			moveToLeft(points, &size, i);
