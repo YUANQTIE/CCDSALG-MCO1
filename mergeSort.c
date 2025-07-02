@@ -1,5 +1,6 @@
 #include "stack.h"
 #include "helperFunc.c" 
+#include<stdio.h>
 
     /*Function that sorts that sorts an array of points by comparing which of the coordinates have the lower angle relative to the anchor point.
     @param points - an array containing all of the points.
