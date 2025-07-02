@@ -8,50 +8,43 @@
     @param high - highest index of the sub-array.*/
 
 void merge(point coords[], point nAncPoint, int low, int mid, int high) {
-    int i = 0, j = 0, k;
-    // Variable i keeps track of the lower valued array's indices, while Variable j keeps track of the higher valued array's indices. Variable k keeps track of the sub-array's size.
     int nLowerMax = mid - low + 1;
     int nHigherMax = high - mid;
-    point leftArr[nLowerMax], rightArr[nHigherMax];
+    int i, j, k;
 
-    while (i < nLowerMax)
-    {
-        leftArr[i] = coords[low + i]; //copies the values of the lower half of the array.
-        i++;
+    point* leftArr = malloc(nLowerMax * sizeof(point));
+    point* rightArr = malloc(nHigherMax * sizeof(point));
+
+    for (i = 0; i < nLowerMax; i++) {
+        leftArr[i] = coords[low + i];
     }
 
-    while (j < nHigherMax)
-    {
-        rightArr[j] = coords[mid + 1 + j]; //copies the values of the higher half of the array.
-        j++;
+    for (j = 0; j < nHigherMax; j++) {
+        rightArr[j] = coords[mid + 1 + j];
     }
 
-    for (i = 0, j = 0, k = low; i < nLowerMax && j < nHigherMax; k++)
-    {
-        if (computeAngle(leftArr[i], nAncPoint) <= computeAngle(rightArr[j], nAncPoint)) { //compares which of the coordinates have the lower polar angle relative to the anchor point.
-            coords[k] = leftArr[i]; //the original sub-array gets the value of the lower valued coordinate first.
+    for (i = 0, j = 0, k = low; i < nLowerMax && j < nHigherMax; k++) {
+        if (computeAngle(leftArr[i], nAncPoint) <= computeAngle(rightArr[j], nAncPoint)) {
+            coords[k] = leftArr[i];
             i++;
-        }
-        else {
+        } else {
             coords[k] = rightArr[j];
             j++;
         }
     }
 
-    while (i < nLowerMax) //fills out the rest of the coordinates if the higher array has been filled. 
-    {
-        coords[k] = leftArr[i];
-        i++;
-        k++;
+    while (i < nLowerMax) {
+        coords[k++] = leftArr[i++];
     }
 
-    while (j < nHigherMax) //fills out the rest of the coordinates if the lower array has been filled. 
-    {
-        coords[k] = rightArr[j]; 
-        j++;
-        k++;
+    while (j < nHigherMax) {
+        coords[k++] = rightArr[j++];
     }
+
+    free(leftArr);
+    free(rightArr);
 }
+
 
     /*Function that sorts the points of a sub-array according to their polar angles relative to the anchor point.
     @param points - an array containing all of the points.
