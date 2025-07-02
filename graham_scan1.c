@@ -2,8 +2,6 @@
 #include <time.h>
 #include "selectionSort.c"
 #include "stack.c"
-#define STEP  (1024)
-#define LIMIT (32768)
 void grahamScan(point points[], int size, Stack*s) {
 	clock_t start; // start time 
   	clock_t end;   // end time
