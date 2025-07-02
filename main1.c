@@ -6,8 +6,8 @@ int main() {
 	int i;
 	Stack s;
 	char filename[20];
-	point points[32768];
-	point scannedPoints[32768];
+	point points[MAX_SIZE];
+	point scannedPoints[MAX_SIZE];
 	
 	printf("Input the name of the input file: ");
 	scanf("%s", filename);
