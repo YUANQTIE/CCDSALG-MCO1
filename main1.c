@@ -1,8 +1,9 @@
-#include"graham_scan1.h"
+#include "graham_scan1.c"
 #include "stack.h"
 #include "sort.h"
 #include "helperFunc.h"
 #include<stdio.h>
+
 int main() {
 	int size = 0;
 	int nPoints;

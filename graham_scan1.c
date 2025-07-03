@@ -3,7 +3,7 @@
 #include "sort.h"
 #include "helperFunc.h"
 #include "stack.h"
-#include "graham_scan1.h"
+
 void grahamScan(point points[], int size, Stack*s) {
 	clock_t start; // start time 
   	clock_t end;   // end time

@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <time.h>
-#include "mergeSort.c"
-#include "stack.c"
+#include "sort.h"
+#include "helperFunc.h"
+#include "stack.h"
+
 void grahamScan(point points[], int size, Stack*s) {
 	clock_t start; // start time 
   	clock_t end;   // end time

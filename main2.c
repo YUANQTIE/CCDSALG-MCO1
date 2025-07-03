@@ -1,5 +1,9 @@
-#include"graham_scan2.c"
-#include<stdio.h>
+#include "graham_scan2.c"
+#include "stack.h"
+#include "sort.h"
+#include "helperFunc.h"
+#include <stdio.h>
+
 int main() {
 	int size = 0;
 	int nPoints;
@@ -32,10 +36,9 @@ int main() {
 			point popped = pop(&s);
 			scannedPoints[i].x = popped.x;
 			scannedPoints[i].y = popped.y;
-			printf("Point #%d X: %lf\n", i+1, popped.x);
-			printf("Point #%d Y: %lf\n", i+1, popped.y);
 			size++;
 		}
+		fprintf(output, "%d\n", size);
 		for(int i=size-1; i>=0; i--) {
 			fprintf(output, "%lf %lf\n", scannedPoints[i].x, scannedPoints[i].y);
 		} 
