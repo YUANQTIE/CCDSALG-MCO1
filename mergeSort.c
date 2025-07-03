@@ -25,9 +25,19 @@ void merge(point coords[], point nAncPoint, int low, int mid, int high) {
     }
 
     for (i = 0, j = 0, k = low; i < nLowerMax && j < nHigherMax; k++) {
-        if (computeAngle(leftArr[i], nAncPoint) <= computeAngle(rightArr[j], nAncPoint)) {
-            coords[k] = leftArr[i];
-            i++;
+        if (computeAngle(leftArr[i], nAncPoint) < computeAngle(rightArr[j], nAncPoint)) {
+            	coords[k] = leftArr[i];
+            	i++;
+        }    
+        else if(computeAngle(leftArr[i], nAncPoint) == computeAngle(rightArr[j], nAncPoint)) {
+				if(getDistance(nAncPoint, leftArr[i]) <= getDistance(nAncPoint, rightArr[j])) {
+					coords[k] = leftArr[i];
+            		i++;
+				} else {
+					coords[k] = rightArr[j];
+            		j++;
+				}
+					
         } else {
             coords[k] = rightArr[j];
             j++;
