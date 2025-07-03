@@ -50,7 +50,7 @@ int isClockwise(point coord1, point coord2, point coord3) {
 }
 
 void moveToLeft(point points[], int* size, int index) {
-	for(int i=index; i<(*size)-1; i++) {
+	for(int i=index; i<(*size); i++) {
 		points[i] = points[i+1];
 	}
 	*size = *size-1;
@@ -64,3 +64,7 @@ int getIndex(point points[], int size, point key) {
 	return -1;
 }
 
+double getDistance(point point1, point point2) {
+	double distance = sqrt(pow((point2.x-point1.x), 2) + pow((point2.y-point1.y), 2));
+	return distance;
+}

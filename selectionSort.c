@@ -14,10 +14,14 @@ void selectionSort(point points[], int size) {
 			if(computeAngle(points[min], anchorPoint) > computeAngle(points[j], anchorPoint)) {
 				min = j;
 			}
+			else if(computeAngle(points[min], anchorPoint) == computeAngle(points[j], anchorPoint)) {
+				if(getDistance(anchorPoint, points[min]) > getDistance(anchorPoint, points[j]))
+					min = j;
+			}
 		}
 		point temp = points[i];
 		points[i] = points[min];
 		points[min] = temp;
 	}
+	
 }
-

@@ -24,8 +24,6 @@ void push(Stack *s, point elem) {
 		s->top++;
 		s->points[s->top] = elem;
 	}
-	else
-		printf("Overflow error.");
 }
 
 point pop(Stack *s) {
@@ -34,10 +32,6 @@ point pop(Stack *s) {
 		elem = s->points[s->top];
 		s->top--;
 	}
-	else
-		printf("Underflow error.");
-		
-
 	return elem;
 }
 
@@ -46,10 +40,6 @@ point top(Stack *s) {
 	if(isEmpty(s) == 0) {
 		elem = s->points[s->top];
 	}
-	else
-		printf("Empty Stack.");
-		
-	
 	return elem;
 }
 
@@ -57,10 +47,6 @@ point nextToTop(Stack *s) {
 	point elem;
 	if(s->top >= 1) {
 		elem = s->points[s->top - 1];
-	}
-	else
-		printf("Stack only contains one elem.");
-		
-	
+	}		
 	return elem;
 }
