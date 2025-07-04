@@ -1,3 +1,11 @@
+/***********************************************************************************
+**********************
+Developed by: 
+Yuan Miguel A. Panlilio, 12413135
+Nigel Henry S. So, 12413801
+************************************************************************************
+*********************/
+
 #include "graham_scan1.c"
 #include "stack.h"
 #include "sort.h"
@@ -17,7 +25,7 @@ int main() {
 	scanf("%s", filename);
 	
 	FILE *input = fopen(filename, "r");
-	if(input == NULL) {
+	if(input == NULL) { //checks if the file exists
 		printf("No file found. \n");
 	}
 	else {
@@ -31,16 +39,16 @@ int main() {
 		scanf("%s", filename);
 	
 		FILE *output = fopen(filename, "w");
-		grahamScan(points, nPoints, &s);
+		grahamScan(points, nPoints, &s); //implements the graham scan algorithm.
 		for(int i=0; isEmpty(&s) == 0; i++) {
 			point popped = pop(&s);
 			scannedPoints[i].x = popped.x;
-			scannedPoints[i].y = popped.y;
+			scannedPoints[i].y = popped.y; //stores the points of the stack in another array.
 			size++;
 		}
 		fprintf(output, "%d\n", size);
 		for(int i=size-1; i>=0; i--) {
-			fprintf(output, "%lf %lf\n", scannedPoints[i].x, scannedPoints[i].y);
+			fprintf(output, "%lf %lf\n", scannedPoints[i].x, scannedPoints[i].y); //prints out the scanned points in order starting with the anchor point.
 		} 
 		fclose(output);
 	}	
