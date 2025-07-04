@@ -1,3 +1,11 @@
+/***********************************************************************************
+**********************
+Developed by: 
+Yuan Miguel A. Panlilio, 12413135
+Nigel Henry S. So, 12413801
+************************************************************************************
+*********************/
+
 #include <math.h>
 #include <stdlib.h>
 #include "helperFunc.h"
@@ -11,10 +19,10 @@
 point findAnchorPoint(point points[], int size) {
 	point min = points[0];
 	for(int i=1; i< size; i++) {
-		if(min.y > points[i].y)
+		if(min.y > points[i].y) //looks for the lowest y value
 			min = points[i];
 		else if(min.y == points[i].y)
-			if(min.x > points[i].x)
+			if(min.x > points[i].x) //looks for the lowest x value
 				min = points[i];
 	}
 	
@@ -34,7 +42,7 @@ double computeAngle(point relativePoint, point anchorPoint){
     @param coord1 - an anchor point
     @param coord2- a point added to the stack that could be an anchor point.
     @param coord3- a that connects to coord2.
-    @return -1 if clockwise and 1 if counter-clockwise.*/
+    @return 1 if clockwise and -1 if counter-clockwise.*/
 
 int isClockwise(point coord1, point coord2, point coord3) {
     int flag;
@@ -49,12 +57,22 @@ int isClockwise(point coord1, point coord2, point coord3) {
     return flag;               
 }
 
+    /*Function that deletes a point from the set of points.
+    @param points[] - the coordinates inputted.
+    @param size - a size of the list of coordinates inputted.
+    @param index - the index of the points to be deleted.*/
+
 void moveToLeft(point points[], int* size, int index) {
 	for(int i=index; i<(*size); i++) {
-		points[i] = points[i+1];
+		points[i] = points[i+1]; //moves the points after the indexed point to the left
 	}
 	*size = *size-1;
 }
+
+/*Function that gets the index of a specific point
+    @param points[] - the coordinates inputted.
+    @param size - a size of the list of coordinates inputted.
+    @param key - the coordinate that will be searched for.*/
 
 int getIndex(point points[], int size, point key) {
 	for(int i=0; i<size; i++) {
@@ -63,6 +81,10 @@ int getIndex(point points[], int size, point key) {
 	}
 	return -1;
 }
+
+/*Function that that gets the distance between two points
+    @param point1 - first point
+    @param point2 - second point whose distance will be looked for relative to the first point.*/
 
 double getDistance(point point1, point point2) {
 	double distance = sqrt(pow((point2.x-point1.x), 2) + pow((point2.y-point1.y), 2));
