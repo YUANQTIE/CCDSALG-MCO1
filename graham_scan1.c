@@ -12,7 +12,7 @@ Nigel Henry S. So, 12413801
 #include "helperFunc.h"
 #include "stack.h"
 
-/*Function that finds the convex hull of a polygon using a selectiong sorting algorithm.
+/*Function that finds the convex hull of a polygon using a selection sorting algorithm.
     @param points[] - the array of coordinates inputted.
     @param size - the number of coordinates inputted.
     @param s - the stack where the convex hull will be contained.*/
