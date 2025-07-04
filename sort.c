@@ -30,7 +30,6 @@ void selectionSort(point points[], int size) {
 			else if(computeAngle(points[min], anchorPoint) == computeAngle(points[j], anchorPoint)) {
 				if(getDistance(anchorPoint, points[min]) > getDistance(anchorPoint, points[j])) //if the angles are equal, checks which one is farther from the anchor point.
 				min = j;
-					min = j;
 			}
 		}
 		point temp = points[i]; //a swap would be noticeable if minimum value is not equal to i.
