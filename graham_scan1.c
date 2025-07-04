@@ -9,12 +9,16 @@ void grahamScan(point points[], int size, Stack*s) {
   	clock_t end;   // end time
   	start = clock();  // record the start time
 	int orig_size = size; 
+	point topElem;
+	point nextToTopElem;
 	create(s);
 	selectionSort(points, size);
 	push(s, points[0]);
 	push(s, points[1]);
 	for(int i=2; i<size; i++) {
-		if(isClockwise(points[i-2], points[i-1], points[i])==1 && i>=2) {
+		topElem = top(s);
+		nextToTopElem = nextToTop(s);
+		if(isClockwise(nextToTopElem, topElem, points[i])==1 && i>=2) {
 			i--;
 			pop(s);
 			moveToLeft(points, &size, i);
