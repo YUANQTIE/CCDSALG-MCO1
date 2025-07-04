@@ -24,7 +24,7 @@ void selectionSort(point points[], int size) {
 	for(int i=1; i< size-1; i++) {
 		int min = i; 
 		for(int j=i+1; j<size; j++) {
-			if(computeAngle(points[min], anchorPoint) > computeAngle(points[j], anchorPoint)) { //checks if the angle of the minimum value is greater than the angle of a coordinate to its right.
+			if(computeAngle(points[min], anchorPoint) > computeAngle(points[j], anchorPoint)) { //sees if the polar angle of the coordinate at min index is greater than the polar angle of a coordinate to its right.
 				min = j;
 			}
 			else if(computeAngle(points[min], anchorPoint) == computeAngle(points[j], anchorPoint)) {
