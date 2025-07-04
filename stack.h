@@ -8,7 +8,7 @@ Nigel Henry S. So, 12413801
 
 #ifndef STACK_H
 #define STACK_H
-#define MAX_SIZE 32768 // Maximum size of stack
+#define MAX_SIZE 32768 //Maximum size of stack
 typedef struct{
     double x;
     double y;
